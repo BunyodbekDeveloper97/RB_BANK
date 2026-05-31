@@ -1,80 +1,440 @@
-# RB Bank - Online Banking System
+<div align="center">
 
-RB Bank is a simple online banking system built using HTML, CSS, and JavaScript. The project is designed to simulate a basic banking experience where users can log in, view their account balance, make transfers, request loans, and close their account.
+# 🏦 RB BANK
 
-## Preview Screenshots
+<img src="./public/image/RB_BANKpng-black.png" width="180" alt="RB BANK Logo">
 
-### 🔓 Login Page
-![Login Preview](./public/image/Screenshot1.png)
+### Modern Online Banking Application
 
-### 🏦 Dashboard
-![Dashboard Preview](./public/image/Screenshot2.png)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge\&logo=html5\&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge\&logo=css3\&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge\&logo=javascript\&logoColor=black)
+![Responsive](https://img.shields.io/badge/Responsive-Design-success?style=for-the-badge)
+![LocalStorage](https://img.shields.io/badge/LocalStorage-Persistence-blue?style=for-the-badge)
 
-### 🔄 Transfer Money
-![Transfer Preview](./public/image/Screenshot3.png)
+<br>
 
+A fully responsive online banking application built with **HTML5**, **CSS3**, and **Vanilla JavaScript**.
 
-## Features
+RB BANK simulates a modern digital banking experience where users can securely manage accounts, transfer funds, request loans, monitor transactions, and maintain session security through automatic logout functionality.
 
-- **User Authentication:** Users can log in with their username and PIN.
-- **Balance Overview:** Displays the current balance of the user’s account.
-- **Transaction History:** Displays all movements (deposits and withdrawals) with dates.
-- **Transfer Money:** Users can transfer money to another account.
-- **Request Loan:** Users can request a loan if they have made sufficient deposits.
-- **Account Closure:** Users can close their account by confirming their username and PIN.
-- **LogOut Timer:** Automatically logs out the user after 5 minutes of inactivity.
+Designed to showcase modern JavaScript development, responsive web design, and real-world financial application workflows.
 
-## Technologies Used
+</div>
 
-- **HTML5**: Structure of the webpage.
-- **CSS3**: Styling for the webpage.
-- **JavaScript**: Logic for handling user interactions, including account functionality, transactions, and UI updates.
+---
 
-## Getting Started
+# 🌐 Live Demo
 
-### Prerequisites
+```text
+https://yourusername.github.io/RB_BANK/
+```
 
-No special prerequisites are required to run this project. You can run it directly in your browser.
+> Replace the URL above with your GitHub Pages deployment link.
 
-### Installation
+---
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/rb-bank.git
+# 📸 Desktop Preview
 
-2. Open the project folder in your code editor.
+## 🔐 Login Page
 
-3. Open the index.html file in your browser to view the app.
+<p align="center">
+  <img src="./public/image/Screenshot1.png" width="900" alt="Login Page">
+</p>
 
-# File Structure
+---
 
-/RB-BANK
+## 💳 Banking Dashboard
+
+<p align="center">
+  <img src="./public/image/Screenshot2.png" width="900" alt="Banking Dashboard">
+</p>
+
+---
+
+## 💸 Transfer & Account Operations
+
+<p align="center">
+  <img src="./public/image/Screenshot3.png" width="900" alt="Transfer Money">
+</p>
+
+---
+
+# 📱 Mobile Responsive Design
+
+<div align="center">
+
+<img src="./public/image/mobile-view-1.png" width="250" alt="Mobile View 1">
+<img src="./public/image/mobile-view-2.png" width="250" alt="Mobile View 2">
+<img src="./public/image/mobile-view-3.png" width="250" alt="Mobile View 3">
+
+</div>
+
+---
+
+# ✨ Features
+
+## 🔑 Secure Authentication
+
+* Login using Username and PIN
+* User validation and authentication
+* Personalized welcome message
+* Protected banking dashboard
+
+---
+
+## 💰 Account Dashboard
+
+* Real-time balance calculations
+* Dynamic account overview
+* Currency formatting using Intl API
+* Localized date and time display
+
+---
+
+## 📊 Transaction Management
+
+* Deposit tracking
+* Withdrawal tracking
+* Transaction history
+* Automatic date formatting
+* Relative transaction dates
+
+Examples:
+
+* Today
+* Yesterday
+* 3 Days Ago
+* Localized Full Dates
+
+---
+
+## 💸 Money Transfer System
+
+Transfer money between registered accounts with built-in validation:
+
+* Positive transfer amount
+* Existing recipient verification
+* Sufficient account balance
+* Self-transfer prevention
+
+---
+
+## 🏦 Loan Request System
+
+Loan requests are approved only when:
+
+```text
+At least one deposit is equal to or greater than
+10% of the requested loan amount.
+```
+
+Features:
+
+* Eligibility verification
+* Simulated bank processing delay
+* Automatic UI updates
+* Transaction recording
+
+---
+
+## 🔍 Transaction Filters
+
+Filter transactions by:
+
+* All Transactions
+* Deposits Only
+* Withdrawals Only
+
+---
+
+## ↕️ Transaction Sorting
+
+* Dynamic transaction sorting
+* Ascending movement ordering
+* Instant UI updates
+
+---
+
+## ❌ Account Closure
+
+Secure account deletion with:
+
+* Username verification
+* PIN confirmation
+* Immediate account removal
+
+---
+
+## ⏱️ Automatic Logout Timer
+
+* 5-minute inactivity timer
+* Countdown display
+* Session security
+* Auto logout protection
+* Timer reset after user actions
+
+---
+
+## 💾 Local Storage Persistence
+
+All account updates are stored locally in the browser.
+
+Includes:
+
+* Transfers
+* Loans
+* Balance updates
+* Account deletion
+* Transaction history
+
+---
+
+## 📱 Fully Responsive Design
+
+Optimized for:
+
+* Desktop Computers
+* Laptops
+* Tablets
+* Mobile Phones
+* Small Screen Devices
+
+---
+
+# 🛠️ Technologies Used
+
+## Frontend
+
+* HTML5
+* CSS3
+* JavaScript (ES6+)
+
+## Layout & Styling
+
+* CSS Grid
+* Flexbox
+* Media Queries
+* Responsive Design
+* CSS Variables
+
+## JavaScript APIs
+
+* LocalStorage API
+* Intl.NumberFormat API
+* Intl.DateTimeFormat API
+* Date API
+* DOM API
+
+---
+
+# 🧠 JavaScript Concepts Practiced
+
+## DOM Manipulation
+
+```javascript
+querySelector()
+textContent
+insertAdjacentHTML()
+classList
+```
+
+---
+
+## Event Handling
+
+```javascript
+click events
+form submissions
+user interactions
+```
+
+---
+
+## Array Methods
+
+```javascript
+map()
+filter()
+reduce()
+find()
+findIndex()
+some()
+sort()
+forEach()
+```
+
+---
+
+## Local Storage
+
+```javascript
+localStorage.getItem()
+localStorage.setItem()
+JSON.parse()
+JSON.stringify()
+```
+
+---
+
+## Date & Time Operations
+
+```javascript
+Date Object
+ISO Date Strings
+Relative Date Calculations
+```
+
+---
+
+## Internationalization
+
+```javascript
+Intl.NumberFormat()
+Intl.DateTimeFormat()
+```
+
+---
+
+## Application State Management
+
+```javascript
+User Session Handling
+Account Data Updates
+Dynamic UI Rendering
+```
+
+---
+
+# 📂 Project Structure
+
+```text
+RB_BANK
 │
-├── /public
-│   ├── index.html        # Main HTML file containing the structure of the web page
-│   ├── style.css         # CSS file for styling and layout design
-│   ├── script.js         # JavaScript file for functionality (account handling transactions, etc.)
-│   └── /image            # Folder containing images (logos, icons, etc.)
+├── public
+│   │
+│   ├── index.html
+│   ├── style.css
+│   ├── script.js
+│   │
+│   └── image
+│       │
+│       ├── RB_BANKpng-black.png
+│       ├── Screenshot1.png
+│       ├── Screenshot2.png
+│       ├── Screenshot3.png
+│       ├── mobile-view-1.png
+│       ├── mobile-view-2.png
+│       └── mobile-view-3.png
 │
-├── .gitignore            # Specifies files and folders to be ignored by Git
-└── README.md             # Project documentation
+├── .gitignore
+└── README.md
+```
 
+---
 
-# How It Works
+# 🎯 Demo Accounts
 
-1. Login: Users must input their username and PIN to access their account. Once logged in, the app will display the balance, transaction history, and allow the user to make transfers and request loans.
+## Account #1
 
-2. Making Transfers: Users can transfer funds to another account. The app ensures that the user has enough balance and prevents transfers to their own account.
+```text
+Username: bw
+PIN: 1111
+```
 
-3. Requesting a Loan: Users can request a loan by inputting an amount. The loan request is only granted if the user has made deposits that exceed 10% of the requested loan amount.
+---
 
-4. Account Closure: Users can close their account by entering their username and PIN to confirm the closure.
+## Account #2
 
-5. Session Timeout: The app will log the user out after 5 minutes of inactivity, showing a countdown timer until logout.
+```text
+Username: bb
+PIN: 2222
+```
 
-# Contributing
+---
 
-If you want to contribute to this project, feel free to fork it, make changes, and submit a pull request. All contributions are welcome!
+# ⚙️ Installation
 
-# Author
- <RB> RB GROUP COMPANY</RB>
+## Clone Repository
+
+```bash
+git clone https://github.com/your-username/RB_BANK.git
+```
+
+---
+
+## Navigate into Project Directory
+
+```bash
+cd RB_BANK
+```
+
+---
+
+## Run the Application
+
+Open:
+
+```bash
+public/index.html
+```
+
+or launch with:
+
+```bash
+Live Server
+```
+
+inside Visual Studio Code.
+
+---
+
+# 🚀 Future Improvements
+
+Planned features for future versions:
+
+* Dark Mode
+* User Registration System
+* Account Creation
+* Transaction Search
+* Advanced Transaction Filtering
+* Analytics Dashboard
+* Financial Charts & Statistics
+* Backend Integration
+* Database Connectivity
+* REST API Integration
+* JWT Authentication
+* Multi-Currency Support
+* Mobile Application
+
+---
+
+# 🤝 Contributing
+
+Contributions are welcome.
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to GitHub
+5. Open a Pull Request
+
+---
+
+# 👨‍💻 Developer
+
+## RB GROUP COMPANY
+
+### RB_Dev
+
+Frontend Developer | JavaScript Developer
+
+Passionate about building modern, responsive, and user-focused web applications while continuously improving software development skills.
+
+---
+
+# 📄 License
+
+This project was created for educational, portfolio, and learning purposes.
+
+© 2026 RB GROUP COMPANY. All Rights Reserved.

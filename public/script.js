@@ -1,7 +1,7 @@
 "use strict";
 
 const account1 = {
-  owner: "bruce",
+  owner: "Jim Carrey",
   movements: [200, 7000, 455.23, -306.5, 25000, -642.21, -133.9, 79.97, 1300],
   interestRate: 1.2,
   pin: 1111,
@@ -28,7 +28,7 @@ const account1 = {
 };
 
 const account2 = {
-  owner: "azizbek",
+  owner: "Sophia Kim",
   movements: [50000, 3400, -1500, -790, -320, -1000, 850, -300],
   interestRate: 1.5,
   pin: 2222,

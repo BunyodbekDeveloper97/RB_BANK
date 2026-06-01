@@ -1,6 +1,5 @@
 "use strict";
 
-// Boshlang'ich default ma'lumotlar (LocalStorage bo'sh bo'lgandagina ishlaydi)
 const defaultAccount1 = {
   owner: "Bruce Wayne",
   movements: [200, 7000, 455.23, -306.5, 25000, -642.21, -133.9, 79.97, 1300],
@@ -40,9 +39,7 @@ const defaultAccount2 = {
   locale: "de-DE",
 };
 
-// LOCALSTORAGE INTEGRATSIYASI
 let accounts = JSON.parse(localStorage.getItem("bankAccounts"));
-
 if (!accounts) {
   accounts = [defaultAccount1, defaultAccount2];
   localStorage.setItem("bankAccounts", JSON.stringify(accounts));
@@ -80,7 +77,6 @@ let currentAccount, timer;
 let sorted = false;
 let currentFilter = "all";
 
-// Helpers
 const updateLocalStorage = function () {
   localStorage.setItem("bankAccounts", JSON.stringify(accounts));
 };
@@ -88,13 +84,10 @@ const updateLocalStorage = function () {
 const formatMovementDate = function (date, locale) {
   const calcDaysPassed = (date1, date2) =>
     Math.floor(Math.abs(date2 - date1) / (1000 * 60 * 60 * 24));
-
   const daysPassed = calcDaysPassed(new Date(), date);
-
   if (daysPassed === 0) return "Today";
   if (daysPassed === 1) return "Yesterday";
   if (daysPassed <= 7) return `${daysPassed} days ago`;
-
   return new Intl.DateTimeFormat(locale).format(date);
 };
 
@@ -104,7 +97,6 @@ const formatCur = function (value, locale, currency) {
   );
 };
 
-// Display Movements with Filter and Sort
 const displayMovements = function (acc, sort = false, filter = "all") {
   containerMovements.innerHTML = "";
 
@@ -114,14 +106,10 @@ const displayMovements = function (acc, sort = false, filter = "all") {
     originalIndex: i,
   }));
 
-  // FILTRLASH
-  if (filter === "deposit") {
-    combined = combined.filter((item) => item.mov > 0);
-  } else if (filter === "withdrawal") {
+  if (filter === "deposit") combined = combined.filter((item) => item.mov > 0);
+  else if (filter === "withdrawal")
     combined = combined.filter((item) => item.mov < 0);
-  }
 
-  // SARALASH
   const sortedCombined = sort
     ? combined.slice().sort((a, b) => a.mov - b.mov)
     : combined;
@@ -130,14 +118,12 @@ const displayMovements = function (acc, sort = false, filter = "all") {
     const type = mov > 0 ? "deposit" : "withdrawal";
     const displayDate = formatMovementDate(new Date(date), acc.locale);
     const formattedMov = formatCur(mov, acc.locale, acc.currency);
-
     const html = `
       <div class="movements__row">
         <div class="movements__type movements__type--${type}">${originalIndex + 1} ${type}</div>
         <div class="movements__date">${displayDate}</div>
         <div class="movements__value">${formattedMov}</div>
       </div>`;
-
     containerMovements.insertAdjacentHTML("afterbegin", html);
   });
 };
@@ -180,14 +166,13 @@ const updateUI = function (acc) {
 };
 
 const startLogOutTimer = function () {
-  let time = 300; // 5 daqiqa
+  let time = 300;
   const tick = function () {
     const min = String(Math.trunc(time / 60)).padStart(2, "0");
     const sec = String(time % 60).padStart(2, "0");
     labelTimer.textContent = `${min}:${sec}`;
-
     if (time === 0) {
-      clearInterval(timer);
+      clearInterval(interval);
       labelWelcome.textContent = "Log in to get started";
       containerApp.classList.remove("visible");
       currentAccount = null;
@@ -195,14 +180,12 @@ const startLogOutTimer = function () {
     time--;
   };
   tick();
-  const timer = setInterval(tick, 1000);
-  return timer;
+  const interval = setInterval(tick, 1000);
+  return interval;
 };
 
-// Login Event
-btnLogin.addEventListener("click", function (e) {
-  e.preventDefault();
-
+// LOGIN
+const handleLogin = function () {
   currentAccount = accounts.find(
     (acc) => acc.username === inputLoginUsername.value.trim().toLowerCase(),
   );
@@ -227,6 +210,7 @@ btnLogin.addEventListener("click", function (e) {
     inputLoginUsername.value = "";
     inputLoginPin.value = "";
     inputLoginPin.blur();
+    inputLoginUsername.blur();
 
     sorted = false;
     currentFilter = "all";
@@ -244,16 +228,22 @@ btnLogin.addEventListener("click", function (e) {
       if (!currentAccount) labelWelcome.textContent = "Log in to get started";
     }, 2500);
   }
+};
+
+btnLogin.addEventListener("click", handleLogin);
+inputLoginPin.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") handleLogin();
+});
+inputLoginUsername.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") handleLogin();
 });
 
-// Transfer Event
-btnTransfer.addEventListener("click", function (e) {
-  e.preventDefault();
+// TRANSFER
+btnTransfer.addEventListener("click", function () {
   const amount = +inputTransferAmount.value;
   const receiverAcc = accounts.find(
     (acc) => acc.username === inputTransferTo.value.trim().toLowerCase(),
   );
-
   inputTransferAmount.value = "";
   inputTransferTo.value = "";
 
@@ -267,20 +257,16 @@ btnTransfer.addEventListener("click", function (e) {
     receiverAcc.movements.push(amount);
     currentAccount.movementsDates.push(new Date().toISOString());
     receiverAcc.movementsDates.push(new Date().toISOString());
-
     updateLocalStorage();
     updateUI(currentAccount);
-
     clearInterval(timer);
     timer = startLogOutTimer();
   }
 });
 
-// Loan Event
-btnLoan.addEventListener("click", function (e) {
-  e.preventDefault();
+// LOAN
+btnLoan.addEventListener("click", function () {
   const amount = Math.floor(+inputLoanAmount.value);
-
   if (
     amount > 0 &&
     currentAccount.movements.some((mov) => mov >= amount * 0.1)
@@ -290,10 +276,8 @@ btnLoan.addEventListener("click", function (e) {
       if (currentAccount && currentAccount === loanAccount) {
         currentAccount.movements.push(amount);
         currentAccount.movementsDates.push(new Date().toISOString());
-
         updateLocalStorage();
         updateUI(currentAccount);
-
         clearInterval(timer);
         timer = startLogOutTimer();
       }
@@ -302,10 +286,8 @@ btnLoan.addEventListener("click", function (e) {
   inputLoanAmount.value = "";
 });
 
-// Close Account Event
-btnClose.addEventListener("click", function (e) {
-  e.preventDefault();
-
+// CLOSE ACCOUNT
+btnClose.addEventListener("click", function () {
   if (
     inputCloseUsername.value.trim().toLowerCase() === currentAccount.username &&
     +inputClosePin.value === currentAccount.pin
@@ -314,7 +296,6 @@ btnClose.addEventListener("click", function (e) {
       (acc) => acc.username === currentAccount.username,
     );
     accounts.splice(index, 1);
-
     updateLocalStorage();
     containerApp.classList.remove("visible");
     labelWelcome.textContent = "Log in to get started";
@@ -325,19 +306,17 @@ btnClose.addEventListener("click", function (e) {
   inputClosePin.value = "";
 });
 
-// Sort Event
-btnSort.addEventListener("click", function (e) {
-  e.preventDefault();
+// SORT
+btnSort.addEventListener("click", function () {
   sorted = !sorted;
   displayMovements(currentAccount, sorted, currentFilter);
 });
 
-// Filters Click Event
+// FILTERS
 filterButtons.forEach((btn) => {
   btn.addEventListener("click", function () {
     filterButtons.forEach((b) => b.classList.remove("filter-btn--active"));
     this.classList.add("filter-btn--active");
-
     currentFilter = this.dataset.filter;
     displayMovements(currentAccount, sorted, currentFilter);
   });

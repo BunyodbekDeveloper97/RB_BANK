@@ -2,7 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
@@ -15,7 +18,7 @@
     <nav>
       <p class="welcome">Welcome to RB BANK</p>
       <img src="image/RB_BANKpng-black.png" alt="RB Bank Logo" class="logo" />
-      <form class="login">
+      <div class="login">
         <input
           type="text"
           placeholder="User"
@@ -30,7 +33,7 @@
           autocomplete="off"
         />
         <button class="login__btn">RB Login &#10140;</button>
-      </form>
+      </div>
     </nav>
 
     <main class="app">
@@ -54,7 +57,6 @@
             Withdrawals
           </button>
         </div>
-
         <div class="movements"></div>
       </div>
 
@@ -70,7 +72,7 @@
 
       <div class="operation operation--transfer">
         <h2>Transfer money</h2>
-        <form class="form form--transfer">
+        <div class="form form--transfer">
           <input
             type="text"
             class="form__input form__input--to"
@@ -85,12 +87,12 @@
           <button class="form__btn form__btn--transfer">&#8594;</button>
           <label class="form__label">Transfer to</label>
           <label class="form__label">Amount</label>
-        </form>
+        </div>
       </div>
 
       <div class="operation operation--loan">
         <h2>Request loan</h2>
-        <form class="form form--loan">
+        <div class="form form--loan">
           <input
             type="number"
             class="form__input form__input--loan-amount"
@@ -99,12 +101,12 @@
           />
           <button class="form__btn form__btn--loan">&#8594;</button>
           <label class="form__label form__label--loan">Amount</label>
-        </form>
+        </div>
       </div>
 
       <div class="operation operation--close">
         <h2>Close account</h2>
-        <form class="form form--close">
+        <div class="form form--close">
           <input
             type="text"
             class="form__input form__input--user"
@@ -121,7 +123,7 @@
           <button class="form__btn form__btn--close">&#8594;</button>
           <label class="form__label">Confirm user</label>
           <label class="form__label">Confirm PIN</label>
-        </form>
+        </div>
       </div>
 
       <p class="logout-timer">

@@ -85,7 +85,6 @@ nav {
   flex-shrink: 0;
 }
 
-/* FIX: hover faqat haqiqiy mouse bo'lganda (telefonda bug yo'q) */
 @media (hover: hover) {
   nav:hover .logo {
     transform: scale(1.05);
@@ -146,12 +145,12 @@ nav {
 .login__btn:hover,
 .login__btn:focus {
   outline: none;
-  color: #555;
+  color: #b1af30;
 }
 
 /* ============================
    MAIN APP GRID
-   FIX: display:none va grid-template ajratildi
+   FIX: display:none va grid-template devided into 2 lines to prevent grid from rendering before login
 ============================ */
 .app {
   display: none;
@@ -572,9 +571,13 @@ h2 {
 
   .login__input {
     width: 100%;
-    font-size: 1.5rem;
+    font-size: 2rem;
     padding: 1.2rem;
     text-align: center;
+  }
+
+  .form__input {
+    font-size: 2rem;
   }
 
   .login__btn {
@@ -686,5 +689,10 @@ h2 {
 
   .movements__row {
     padding: 1.2rem 1.5rem;
+  }
+
+  .login__input,
+  .form__input {
+    font-size: 2rem;
   }
 }

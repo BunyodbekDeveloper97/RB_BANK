@@ -1,4 +1,4 @@
-"use strict";
+"script.js - RB BANK Application Logic";
 
 const defaultAccount1 = {
   owner: "Bruce Wayne",
@@ -173,7 +173,7 @@ const startLogOutTimer = function () {
     labelTimer.textContent = `${min}:${sec}`;
     if (time === 0) {
       clearInterval(interval);
-      labelWelcome.textContent = "Log in to get started";
+      labelWelcome.textContent = "Welcome to RB BANK";
       containerApp.classList.remove("visible");
       currentAccount = null;
     }
@@ -223,9 +223,9 @@ const handleLogin = function () {
     timer = startLogOutTimer();
     updateUI(currentAccount);
   } else if (inputLoginUsername.value || inputLoginPin.value) {
-    labelWelcome.textContent = "Wrong credentials. Try again.";
+    labelWelcome.textContent = "Wrong Username or PIN";
     setTimeout(() => {
-      if (!currentAccount) labelWelcome.textContent = "Log in to get started";
+      if (!currentAccount) labelWelcome.textContent = "Welcome to RB BANK";
     }, 2500);
   }
 };
@@ -298,7 +298,7 @@ btnClose.addEventListener("click", function () {
     accounts.splice(index, 1);
     updateLocalStorage();
     containerApp.classList.remove("visible");
-    labelWelcome.textContent = "Log in to get started";
+    labelWelcome.textContent = "Welcome to RB BANK";
     currentAccount = null;
     if (timer) clearInterval(timer);
   }
